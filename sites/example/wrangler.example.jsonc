@@ -1,0 +1,19 @@
+// 見本のサイトの Worker の設定。wrangler.jsonc に写し、<...> を自分のアカウントの値に書き換える。
+{
+  "name": "example-chat",
+  "main": "index.js",
+  "compatibility_date": "2026-08-22",
+  "build": { "command": "node scripts/build-widget.mjs --minify" },
+  // dist/widget.js は「実行するコード」ではなく「配る文字列」として読み込む
+  "rules": [{ "type": "Text", "globs": ["**/dist/widget.js"], "fallthrough": false }],
+  "ai": { "binding": "AI" },
+  // npx wrangler d1 create <name> で作り、出てきた ID を入れる
+  "d1_databases": [{ "binding": "LOG", "database_name": "<name>", "database_id": "<id>", "migrations_dir": "../../migrations" }],
+  // npx wrangler kv namespace create RATE で作り、出てきた ID を入れる
+  "kv_namespaces": [{ "binding": "RATE", "id": "<id>" }],
+  "triggers": { "crons": ["0 0 1 * *"] },
+  "assets": { "directory": "./public", "binding": "ASSETS" },
+  // Turnstile のサイトキー（公開してよい値）。秘密の鍵は npx wrangler secret put TURNSTILE_SECRET
+  "vars": { "TURNSTILE_SITEKEY": "<sitekey>" },
+  "observability": { "enabled": true }
+}

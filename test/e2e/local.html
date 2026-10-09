@@ -1,0 +1,20 @@
+<!doctype html>
+<!--
+  画面（src/widget/）を手元で確かめるページ。手元の Worker（npm run dev -- -c sites/<名前>/wrangler.jsonc）から widget.js を読む。
+  npm run serve:page -- <名前> で開く：http://localhost:8788/local.html
+  背景は sites/<名前>/site-shot.webp（あれば）。「トップへ戻る」ボタンの見本も置き、案内役がその上で止まるかを見る。
+-->
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>チャットボット 手元の確認</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#fff}
+main{min-height:300vh}
+.site-shot{display:block;width:100%;height:auto}
+.p-fixBtnWrap{position:fixed;right:16px;bottom:20px;z-index:11}
+.c-fixBtn{width:52px;height:52px;border-radius:50%;border:1px solid #999;background:#fff;color:#666;display:grid;place-items:center;opacity:.75}
+</style></head><body>
+<main><img class="site-shot" src="site-shot.webp" alt="" onerror="this.remove()"></main>
+<div class="p-fixBtnWrap"><button class="c-fixBtn" aria-label="ページトップボタン">↑</button></div>
+<script src="http://localhost:8789/widget.js"></script>
+</body></html>

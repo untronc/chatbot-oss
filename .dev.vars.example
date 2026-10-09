@@ -1,0 +1,13 @@
+# 手元で動かすときの値（npx wrangler dev が読む）。sites/<サイト>/.dev.vars に写して使う。本物の秘密は書かない。
+# 本番の秘密（TURNSTILE_SECRET・RESEND_API_KEY）は `npx wrangler secret put` で Cloudflare に入れる。
+
+# 手元の試験の印。localhost:8788 からの呼び出しを受け付け、回数の制限を外し、下の差し替えを効かせる
+TEST_MODE=1
+
+# Turnstile の公式の試験用の鍵（必ず通る）。https://developers.cloudflare.com/turnstile/troubleshooting/testing/
+TURNSTILE_SECRET=1x0000000000000000000000000000000AA
+TURNSTILE_SITEKEY=1x00000000000000000000AA
+
+# メールは Resend に送らず、受付の試験（test/e2e/run-contact-test.mjs）が立てる手元の受け口に送る
+RESEND_API_URL=http://127.0.0.1:8790/emails
+RESEND_API_KEY=local-test-only

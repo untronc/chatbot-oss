@@ -1,0 +1,9 @@
+node_modules/
+.tools/
+dist/
+.wrangler/
+.dev.vars
+test/e2e/results/
+# サイトごとの設定（お客さまの分）は公開しない。見本だけ残す
+sites/*
+!sites/example/

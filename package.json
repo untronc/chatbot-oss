@@ -1,0 +1,36 @@
+{
+  "name": "chatbot-oss",
+  "version": "0.1.0",
+  "description": "サイトに置く案内役の AI チャットボット（Cloudflare Workers）",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node scripts/build-widget.mjs",
+    "check": "npm run build && vitest run",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "dev": "wrangler dev --port 8789",
+    "dev:contacttest": "wrangler dev --port 8789 --test-scheduled --var TEST_SITE_LIMIT:0",
+    "db:local": "wrangler d1 migrations apply LOG --local",
+    "serve:page": "node test/e2e/serve.cjs",
+    "test:contact": "node test/e2e/run-contact-test.mjs",
+    "test:ai": "node test/e2e/run-eval.mjs",
+    "deploy": "node scripts/deploy.mjs"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.22.0",
+    "esbuild": "^0.28.2",
+    "happy-dom": "^20.14.5",
+    "vitest": "^4.1.11",
+    "wrangler": "^4.147.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true,
+    "esbuild@0.28.2": true,
+    "workerd@1.20260815.1": true,
+    "workerd@1.20261001.1": true
+  }
+}
