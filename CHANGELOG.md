@@ -4,9 +4,12 @@
 
 ## まだ上げていない
 
+## 0.2.0（2026-10-11）
+
 - コード管理の決まり（ブランチ・タグ・GitHub に上げる時）を `docs/release.md` に足した
 - D1 の表を汎用 SQL にした（`migrations/V0001__init.sql`）。ID はアプリが作る UUID（`VARCHAR(36)`）、日時は `VARCHAR(32)`。ファイル名は Flyway の形
-- **すでに 0.1.0 を上げているサイトは、この版を上げる前に表の作り直しが要る。** 0.1.0 の表は ID が SQLite の自動番号（INTEGER）なので、この版のコードが UUID を入れると書き込みが落ちる。作り直しの手順は、その版を上げるときに作る
+- 会話の記録（D1）に入れる前に、質問と答えの中のメールアドレス・電話番号を「［メールアドレス］」「［電話番号］」に置き換える（`maskPersonal`）。名前は見分けられないので伏せない。持ち主へのメールと AI に渡す会話は伏せない
+- **すでに 0.1.0 を上げているサイトは、この版を上げる前に表の作り直しが要る。** 0.1.0 の表は ID が SQLite の自動番号（INTEGER）なので、この版のコードが UUID を入れると書き込みが落ちる。手順：表が空か確かめる → `DROP TABLE messages; DROP TABLE contacts; DELETE FROM d1_migrations WHERE name='0001_init.sql';` → `wrangler d1 migrations apply LOG --remote` → 上げる。記録が残っているサイトは、先に移し方を決める
 
 ## 0.1.0（2026-10-08）
 

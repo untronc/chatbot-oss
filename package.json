@@ -1,6 +1,6 @@
 {
   "name": "chatbot-oss",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "サイトに置く案内役の AI チャットボット（Cloudflare Workers）",
   "private": true,
   "type": "module",

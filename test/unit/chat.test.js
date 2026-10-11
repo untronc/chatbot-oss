@@ -45,6 +45,15 @@ describe("POST /chat", () => {
     expect(row.id).toMatch(/^[0-9a-f-]{36}$/);
   });
 
+  it("記録には、質問と答えの中のメールアドレス・電話番号を伏せて入れる", async () => {
+    const AI = fakeAI("taro@example.com・090-1234-5678 宛てにはお送りできません。");
+    const r = await chat("山田です。taro@example.com か 090-1234-5678 に見積もりを", { e: { AI }, extra: { conv: "mask1" } });
+    expect(r.body.reply).toBe("taro@example.com・090-1234-5678 宛てにはお送りできません。");
+    const row = await env.LOG.prepare("SELECT * FROM messages WHERE conv=?").bind("mask1").first();
+    expect(row.question).toBe("山田です。［メールアドレス］ か ［電話番号］ に見積もりを");
+    expect(row.answer).toBe("［メールアドレス］・［電話番号］ 宛てにはお送りできません。");
+  });
+
   it("持ち主の端末（owner）の会話は、答えるが記録しない", async () => {
     const AI = fakeAI("1ページ 10,000円（税込）です。");
     const r = await chat("持ち主の試しの質問", { e: { AI }, extra: { owner: true } });
