@@ -2,6 +2,7 @@
   "name": "chatbot-oss",
   "version": "0.2.0",
   "description": "サイトに置く案内役の AI チャットボット（Cloudflare Workers）",
+  "license": "PolyForm-Noncommercial-1.0.0",
   "private": true,
   "type": "module",
   "engines": {

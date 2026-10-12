@@ -64,3 +64,7 @@ npm run check
 - [docs/testing.md](docs/testing.md)：試験の種類と流し方
 - [docs/release.md](docs/release.md)：版の付け方・本番に上げる・前の版に戻す
 - [CHANGELOG.md](CHANGELOG.md)：変えたことの記録
+
+## ライセンス
+
+[PolyForm Noncommercial License 1.0.0](LICENSE)。見る・学ぶ・試すのは自由です。商用の利用（販売・業務での利用・有償の導入など）はできません。商用で使いたい場合は untronc（https://untronc.jp）にご相談ください。
