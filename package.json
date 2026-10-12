@@ -1,5 +1,5 @@
 {
-  "name": "chatbot-oss",
+  "name": "site-chatbot",
   "version": "0.2.0",
   "description": "サイトに置く案内役の AI チャットボット（Cloudflare Workers）",
   "license": "PolyForm-Noncommercial-1.0.0",

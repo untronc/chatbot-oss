@@ -1,4 +1,4 @@
-# chatbot-oss
+# site-chatbot
 
 サイトに置く、案内役の AI チャットボットです。Cloudflare Workers で動きます。
 
