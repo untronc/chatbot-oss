@@ -19,6 +19,7 @@
     "serve:page": "node test/e2e/serve.cjs",
     "test:contact": "node test/e2e/run-contact-test.mjs",
     "test:ai": "node test/e2e/run-eval.mjs",
+    "drift": "node scripts/check-drift.mjs",
     "deploy": "node scripts/deploy.mjs"
   },
   "devDependencies": {
